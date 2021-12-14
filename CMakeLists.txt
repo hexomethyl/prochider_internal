@@ -3,8 +3,6 @@ project(ProcHider_internal C)
 
 set(CMAKE_C_STANDARD 99)
 
-set(CMAKE_CXX_FLAGS "${CMAKE_C_FLAGS}" -no-W)
-
 add_library(ProcHider_internal SHARED src/dllmain.c src/hook.h src/hook.c)
 
 include_directories("C:/NextCloud/Code/includes/phnt")
