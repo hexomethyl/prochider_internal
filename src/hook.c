@@ -2,7 +2,7 @@
 
 extern hookInfo g_NtQuerySysInfoHook;
 
-void Tramp64(void* pTarget, void* pDetour, void** ppOriginal, unsigned int len, unsigned char* backupBytes)
+void Tramp64(void* pTarget, void* pDetour, void** ppTrampoline, unsigned int len, unsigned char* backupBytes)
 {
     int MinLen = 14;
 
@@ -15,6 +15,7 @@ void Tramp64(void* pTarget, void* pDetour, void** ppOriginal, unsigned int len, 
 
     BYTE* jmpStubAddress = (jmpStub+6);
     SIZE_T x64bitAddress = 8;
+
     memcpy(backupBytes,pTarget,len); //Save function prologue to unhook later
 
     //Allocate RWX page for trampoline function
@@ -46,7 +47,7 @@ void Tramp64(void* pTarget, void* pDetour, void** ppOriginal, unsigned int len, 
     }
     
     VirtualProtect(pTarget, len, dwOld, &dwOld);//Restore page permissions
-    *ppOriginal = pTrampoline; //Save trampoline function address
+    *ppTrampoline = pTrampoline; //Save trampoline function address
 }
 
 void restore(void* pTarget, unsigned char* backupBytes, unsigned int len)

@@ -21,6 +21,6 @@ SystemInformation, ULONG SystemInformationLength, PULONG ReturnLength);
 NTSTATUS hkNtQuerySystemInfo(SYSTEM_INFORMATION_CLASS SystemInformationClass, PVOID
 SystemInformation, ULONG SystemInformationLength,PULONG ReturnLength);
 
-void Tramp64(void* pTarget, void* pDetour, void** ppOriginal, unsigned int len, unsigned char* backupBytes);
+void Tramp64(void* pTarget, void* pDetour, void** ppTrampoline, unsigned int len, unsigned char* backupBytes);
 
 void restore(void* pTarget, unsigned char* backupBytes, unsigned int len);
