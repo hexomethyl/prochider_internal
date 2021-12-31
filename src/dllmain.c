@@ -21,7 +21,9 @@ void mainThread()
             g_NtQuerySysInfoHook.backupBytes);
     printf("Detour NtQuerySystemInformation: 0x%p\n",  g_NtQuerySysInfoHook.detourFunc);
     printf("Trampoline NtQuerySystemInformation: 0x%p\n", g_NtQuerySysInfoHook.trampFunc);
-    
+
+    MessageBoxA(NULL,"Process hidden",NULL,MB_OK);
+
     while (1)
     {
         if (GetAsyncKeyState(VK_DELETE) & 0x8000)
