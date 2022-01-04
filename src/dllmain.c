@@ -1,6 +1,6 @@
 #include "hook.h"
 
-HINSTANCE g_dllHandle;
+static HINSTANCE g_dllHandle;
 hookInfo g_NtQuerySysInfoHook;
 
 void mainThread()
